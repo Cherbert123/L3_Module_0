@@ -48,11 +48,18 @@ public class TextUndoRedo implements KeyListener {
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-	
-		if(e.getKeyCode() == 8) {
-			savedNums.push(label.getText().substring(label.getText().length(),label.getText().length()));
+		String labels = label.getText();
+		if(e.getKeyCode() == 8 && labels.length() > 0){
+			String x = ""+labels.charAt(labels.length() - 1);
+			savedNums.push(x);
+			label.setText(labels.substring(0, labels.length() - 1));
 			System.out.println(e.getKeyCode());
-		} else {
+		} else if(e.getKeyCode() == 8){
+			label.setText("");
+			
+		}else if(e.getKeyCode() == 17){
+			label.setText(label.getText() + savedNums.pop());
+		}else{
 		label.setText(label.getText() + e.getKeyChar());
 		frame.pack();
 		System.out.println(e.getKeyCode());
