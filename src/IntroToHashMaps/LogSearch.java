@@ -1,6 +1,17 @@
 package IntroToHashMaps;
 
-public class LogSearch {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class LogSearch implements ActionListener{
   /* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
@@ -28,4 +39,28 @@ public class LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
-}
+	JPanel panel = new JPanel(); JFrame frame = new JFrame(); JButton Add = new JButton(); JButton remove = new JButton(); JButton search = new JButton(); JButton view = new JButton(); HashMap<Integer, String> map = new HashMap<Integer, String>();public static void main(String[] arg) {LogSearch search = new LogSearch();search.runner();}public void runner() {frame.add(panel);panel.add(Add);panel.add(search);panel.add(view);panel.add(remove);remove.setText("Remove");view.setText("View List");Add.setText("Add Entry");search.setText("Search by ID");frame.pack();frame.setVisible(true);Add.addActionListener(this);view.addActionListener(this);search.addActionListener(this);remove.addActionListener(this);}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Add) {
+			map.put(Integer.parseInt(JOptionPane.showInputDialog("Enter an ID Number:")), JOptionPane.showInputDialog("Enter a Name:"));
+		}
+		if(e.getSource() == view) {
+			String list = new String();
+			for(Integer i : map.keySet()) {
+				list = list + "\n ID: " + i + " Name: " + map.get(i);
+			}
+			JOptionPane.showMessageDialog(null, "" + list);
+		}
+		if(e.getSource() == search) {
+			JOptionPane.showMessageDialog(null, map.get(Integer.parseInt(JOptionPane.showInputDialog("Enter ID:"))) );
+		}
+		if(e.getSource() == remove) {
+			map.get(Integer.parseInt());
+			map.replace(JOptionPane.showInputDialog("Enter ID:"), value)
+		}
+		
+	}
+	}
+
+

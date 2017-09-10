@@ -1,7 +1,18 @@
 package IntroToHashMaps;
 
+import java.util.HashMap;
+
 public class IntroToHashMaps {
 	//1. Create a HashMap called roots with Integers for the keys and Doubles for the values.
+	public static void main(String[] args) {
+		HashMap<Integer, Double> roots = new HashMap<Integer, Double>();
+		for(int i = 0; i < 501; i++) {
+			roots.put(i, Math.sqrt(i));
+		}
+		for(Integer i : roots.keySet()) {
+			System.out.println("The square Root of " + i + " is " + roots.get(i));
+		}
+	}
 	
 	//2. Using a for-loop, add 500 entries to your HashMap. The key entry will be the 
 	//   current iteration of the loop (i). The value entry will be the square root of i.
